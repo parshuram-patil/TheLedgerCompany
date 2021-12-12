@@ -5,25 +5,23 @@ import com.ledger.geektrust.dto.IRequestDto;
 import com.ledger.geektrust.dto.LoanRequestDto;
 import com.ledger.geektrust.dto.PaymentRequestDto;
 import com.ledger.geektrust.transaction.BalanceTransaction;
-import com.ledger.geektrust.transaction.ITransaction;
 import com.ledger.geektrust.transaction.LoanTransaction;
 import com.ledger.geektrust.transaction.PaymentTransaction;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
+
 public class TransactionHandler implements ITransactionHandler{
 
-    @Autowired
     LoanTransaction loanTransaction;
-
-    @Autowired
     PaymentTransaction paymentTransaction;
-
-    @Autowired
     BalanceTransaction balanceTransaction;
+
+    public TransactionHandler() {
+        loanTransaction = new LoanTransaction();
+        paymentTransaction = new PaymentTransaction();
+        balanceTransaction = new BalanceTransaction();
+    }
 
     @Override
     public void handleTransactions(List<IRequestDto> requests) {

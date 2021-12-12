@@ -2,21 +2,18 @@ package com.ledger.geektrust.dao;
 
 import com.ledger.geektrust.entity.Loan;
 import com.ledger.geektrust.entity.LoanTransaction;
-import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
 
-@Service
-public class LoanDao {
-    private List<Loan> loans = new ArrayList<>();
-    private List<LoanTransaction> transactions = new ArrayList<>();
 
-    public Loan getLoan(String borrowerName, String bankName) throws IllegalArgumentException {
+public class LoanDao {
+    private static List<Loan> loans = new ArrayList<>();
+    private static List<LoanTransaction> transactions = new ArrayList<>();
+
+    public static Loan getLoan(String borrowerName, String bankName) throws IllegalArgumentException {
         Optional<Loan> result = loans.stream()
                 .filter(loan -> loan.getBorrowerName().equals(borrowerName) && loan.getBankName().equals(bankName))
                 .findFirst();
@@ -26,7 +23,7 @@ public class LoanDao {
         return result.get();
     }
 
-    public Loan createLoan(Loan loan) {
+    public static Loan createLoan(Loan loan) {
         /*
             This is just representation of actual EMI paid by borrower
             Eg. SI(Auto debit), 3rd party deposit, manual deposits, etc.
@@ -39,25 +36,25 @@ public class LoanDao {
                     .emiNumber(emiNumber)
                     .amountPaid(loan.getEmiAmount())
                     .build();
-            this.payEmi(transaction);
+            payEmi(transaction);
         }
 
-        this.loans.add(loan);
+        loans.add(loan);
 
         return loan;
     }
 
-    public void payEmi(LoanTransaction transaction) throws IllegalArgumentException {
-        int index = this.transactions.indexOf(transaction);
+    public static void payEmi(LoanTransaction transaction) throws IllegalArgumentException {
+        int index = transactions.indexOf(transaction);
         if (index < 0)
-            this.transactions.add(transaction);
+            transactions.add(transaction);
         else
-            this.transactions.set(index, transaction);
+            transactions.set(index, transaction);
     }
 
-    public List<LoanTransaction> getTransactions(String customerName, String bankName, Integer emiNumber) {
+    public static List<LoanTransaction> getTransactions(String customerName, String bankName, Integer emiNumber) {
 
-        return this.transactions.stream()
+        return transactions.stream()
                 .filter(transaction -> (
                                 transaction.getBorrowerName().equals(customerName) &&
                                         transaction.getBankName().equals(bankName) &&
