@@ -29,12 +29,13 @@ public class LoanDao {
             Eg. SI(Auto debit), 3rd party deposit, manual deposits, etc.
         */
 
-        for (int emiNumber = 1; emiNumber <= loan.getNumberOfEmi(); emiNumber++) {
+        for (int emiNumber = 0; emiNumber <= loan.getNumberOfEmi(); emiNumber++) {
+            Integer emiAmount = emiNumber == 0 ? 0 : loan.getEmiAmount();
             LoanTransaction transaction = LoanTransaction.builder()
                     .bankName(loan.getBankName())
                     .borrowerName(loan.getBorrowerName())
                     .emiNumber(emiNumber)
-                    .amountPaid(loan.getEmiAmount())
+                    .amountPaid(emiAmount)
                     .build();
             payEmi(transaction);
         }

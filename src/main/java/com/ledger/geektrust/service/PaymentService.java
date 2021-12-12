@@ -17,9 +17,10 @@ public class PaymentService {
         float lumpSumAmount = paymentRequestDto.getLumpSumAmount();
 
         Loan loan = LoanDao.getLoan(borrowerName, bankName);
-        int emiAmount = loan.getEmiAmount();
+        int emiAmount = emiNumber == 0 ? 0 : loan.getEmiAmount();
 
         int amountPaid = Util.cielFloat(lumpSumAmount + emiAmount);
+        //amountPaid = emiNumber == 0 ? -1 * amountPaid : amountPaid;
         LoanTransaction transaction = LoanTransaction.builder()
                 .bankName(bankName)
                 .borrowerName(borrowerName)
