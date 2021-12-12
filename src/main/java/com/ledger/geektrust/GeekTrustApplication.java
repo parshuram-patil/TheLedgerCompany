@@ -1,14 +1,10 @@
 package com.ledger.geektrust;
 
-import com.ledger.geektrust.dto.BalanceRequestDto;
 import com.ledger.geektrust.dto.IRequestDto;
-import com.ledger.geektrust.dto.LoanRequestDto;
-import com.ledger.geektrust.dto.PaymentRequestDto;
 import com.ledger.geektrust.handlers.TransactionHandler;
 import com.ledger.geektrust.util.FileUtil;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 
