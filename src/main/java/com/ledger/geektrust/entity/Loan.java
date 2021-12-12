@@ -20,22 +20,20 @@ public class Loan {
     Integer emiAmount;
 
     @Override
-    public boolean equals(Object obj)
-    {
-        if(this == obj)
+    public boolean equals(Object obj) {
+        if (this == obj)
             return true;
 
-        if(obj == null || obj.getClass()!= this.getClass())
+        if (obj == null || obj.getClass() != this.getClass())
             return false;
 
         Loan loan = (Loan) obj;
 
-        return (loan.borrowerName == this.borrowerName && loan.bankName == this.bankName);
+        return (loan.borrowerName.equals(this.borrowerName) && loan.bankName.equals(this.bankName));
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         return (this.borrowerName + this.bankName).hashCode();
     }
 }

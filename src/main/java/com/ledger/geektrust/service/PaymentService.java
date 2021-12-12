@@ -1,5 +1,6 @@
 package com.ledger.geektrust.service;
 
+import com.ledger.geektrust.constant.Constant;
 import com.ledger.geektrust.dao.LoanDao;
 import com.ledger.geektrust.dto.PaymentRequestDto;
 import com.ledger.geektrust.entity.Loan;
@@ -27,6 +28,6 @@ public class PaymentService {
                 .build();
         LoanDao.payEmi(transaction);
 
-        return "Success";
+        return Constant.SUCCESS;
     }
 }

@@ -24,15 +24,15 @@ public class LoanTransaction {
         LoanTransaction transaction = (LoanTransaction) obj;
 
         return (
-                transaction.borrowerName == this.borrowerName &&
-                        transaction.bankName == this.bankName &&
-                        transaction.getEmiNumber() == this.getEmiNumber()
+                transaction.borrowerName.equals(this.borrowerName) &&
+                        transaction.bankName.equals(this.bankName) &&
+                        transaction.getEmiNumber().equals(this.getEmiNumber())
         );
     }
 
     @Override
     public int hashCode()
     {
-        return (this.borrowerName + this.bankName).hashCode();
+        return (this.borrowerName + this.bankName + String.valueOf(this.getEmiNumber())).hashCode();
     }
 }
