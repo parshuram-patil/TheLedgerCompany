@@ -1,9 +1,7 @@
 package com.ledger.geektrust.transaction;
 
 import com.ledger.geektrust.dto.BalanceRequestDto;
-import com.ledger.geektrust.dto.BalanceResponseDto;
 import com.ledger.geektrust.dto.IRequestDto;
-import com.ledger.geektrust.dto.LoanRequestDto;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -12,10 +10,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
-class BalanceTransactionTest {
+class BalanceTransactionHandlerTest {
 
     @InjectMocks
-    BalanceTransaction balanceTransaction;
+    BalanceTransactionHandler balanceTransactionHandler;
 
     @Test
     void shouldHandleBalanceCheckForFailedTransaction() {
@@ -27,6 +25,6 @@ class BalanceTransactionTest {
                 .emiNumber(3)
                 .build();
 
-        assertThrows(IllegalArgumentException.class, () -> balanceTransaction.handleTransaction(requestDto));
+        assertThrows(IllegalArgumentException.class, () -> balanceTransactionHandler.handleTransaction(requestDto));
     }
 }

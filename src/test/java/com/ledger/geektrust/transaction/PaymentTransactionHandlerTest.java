@@ -10,10 +10,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @ExtendWith(MockitoExtension.class)
-class PaymentTransactionTest {
+class PaymentTransactionHandlerTest {
 
     @InjectMocks
-    PaymentTransaction paymentTransaction;
+    PaymentTransactionHandler paymentTransactionHandler;
 
     @Test
     void shouldHandlePaymentForFailedTransaction() {
@@ -24,6 +24,6 @@ class PaymentTransactionTest {
                 .emiNumber(5)
                 .build();
 
-        assertThrows(IllegalArgumentException.class, () -> paymentTransaction.handleTransaction(requestDto));
+        assertThrows(IllegalArgumentException.class, () -> paymentTransactionHandler.handleTransaction(requestDto));
     }
 }

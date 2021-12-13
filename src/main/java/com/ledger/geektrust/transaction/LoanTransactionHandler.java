@@ -5,11 +5,11 @@ import com.ledger.geektrust.dto.LoanRequestDto;
 import com.ledger.geektrust.service.LoanService;
 
 
-public class LoanTransaction implements ITransaction{
+public class LoanTransactionHandler implements ITransaction{
 
     private final LoanService loanService;
 
-    public LoanTransaction() {
+    public LoanTransactionHandler() {
         loanService = new LoanService();
     }
 

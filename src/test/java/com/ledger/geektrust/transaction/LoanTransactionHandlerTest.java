@@ -2,7 +2,6 @@ package com.ledger.geektrust.transaction;
 
 import com.ledger.geektrust.dto.IRequestDto;
 import com.ledger.geektrust.dto.LoanRequestDto;
-import com.ledger.geektrust.transaction.LoanTransaction;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -12,10 +11,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 @ExtendWith(MockitoExtension.class)
-class LoanTransactionTest {
+class LoanTransactionHandlerTest {
 
     @InjectMocks
-    LoanTransaction loanTransaction;
+    LoanTransactionHandler loanTransactionHandler;
 
     @Test
     void shouldHandleLoanTransaction() {
@@ -27,7 +26,7 @@ class LoanTransactionTest {
                 .rateOfInterest(6f)
                 .build();
 
-        assertDoesNotThrow(() -> loanTransaction.handleTransaction(requestDto));
+        assertDoesNotThrow(() -> loanTransactionHandler.handleTransaction(requestDto));
     }
 
 }

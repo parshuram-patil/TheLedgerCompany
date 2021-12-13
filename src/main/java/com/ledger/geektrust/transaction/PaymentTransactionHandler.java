@@ -4,11 +4,11 @@ import com.ledger.geektrust.dto.IRequestDto;
 import com.ledger.geektrust.dto.PaymentRequestDto;
 import com.ledger.geektrust.service.PaymentService;
 
-public class PaymentTransaction implements ITransaction {
+public class PaymentTransactionHandler implements ITransaction {
 
     private final PaymentService paymentService;
 
-    public PaymentTransaction() {
+    public PaymentTransactionHandler() {
         paymentService = new PaymentService();
     }
 

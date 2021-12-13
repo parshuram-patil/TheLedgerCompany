@@ -6,11 +6,11 @@ import com.ledger.geektrust.dto.IRequestDto;
 import com.ledger.geektrust.service.BalanceService;
 
 
-public class BalanceTransaction implements ITransaction {
+public class BalanceTransactionHandler implements ITransaction {
 
     private final BalanceService balanceService;
 
-    public BalanceTransaction () {
+    public BalanceTransactionHandler() {
         this.balanceService  = new BalanceService();
     }
 

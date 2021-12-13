@@ -4,34 +4,34 @@ import com.ledger.geektrust.dto.BalanceRequestDto;
 import com.ledger.geektrust.dto.IRequestDto;
 import com.ledger.geektrust.dto.LoanRequestDto;
 import com.ledger.geektrust.dto.PaymentRequestDto;
-import com.ledger.geektrust.transaction.BalanceTransaction;
-import com.ledger.geektrust.transaction.LoanTransaction;
-import com.ledger.geektrust.transaction.PaymentTransaction;
+import com.ledger.geektrust.transaction.BalanceTransactionHandler;
+import com.ledger.geektrust.transaction.LoanTransactionHandler;
+import com.ledger.geektrust.transaction.PaymentTransactionHandler;
 
 import java.util.List;
 
 
 public class TransactionHandler implements ITransactionHandler{
 
-    LoanTransaction loanTransaction;
-    PaymentTransaction paymentTransaction;
-    BalanceTransaction balanceTransaction;
+    LoanTransactionHandler loanTransactionHandler;
+    PaymentTransactionHandler paymentTransactionHandler;
+    BalanceTransactionHandler balanceTransactionHandler;
 
     public TransactionHandler() {
-        loanTransaction = new LoanTransaction();
-        paymentTransaction = new PaymentTransaction();
-        balanceTransaction = new BalanceTransaction();
+        loanTransactionHandler = new LoanTransactionHandler();
+        paymentTransactionHandler = new PaymentTransactionHandler();
+        balanceTransactionHandler = new BalanceTransactionHandler();
     }
 
     @Override
     public void handleTransactions(List<IRequestDto> requests) {
         requests.forEach(e -> {
             if(e instanceof LoanRequestDto )
-                loanTransaction.handleTransaction(e);
+                loanTransactionHandler.handleTransaction(e);
             else if(e instanceof PaymentRequestDto)
-                paymentTransaction.handleTransaction(e);
+                paymentTransactionHandler.handleTransaction(e);
             else if(e instanceof BalanceRequestDto )
-                balanceTransaction.handleTransaction(e);
+                balanceTransactionHandler.handleTransaction(e);
         });
     }
 }
