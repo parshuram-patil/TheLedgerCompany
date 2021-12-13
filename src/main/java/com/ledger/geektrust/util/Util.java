@@ -1,5 +1,8 @@
 package com.ledger.geektrust.util;
 
+import lombok.experimental.UtilityClass;
+
+@UtilityClass
 public class Util {
 
     public static int cielFloat(float value) {

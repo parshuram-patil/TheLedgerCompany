@@ -3,11 +3,12 @@ package com.ledger.geektrust;
 import com.ledger.geektrust.dto.IRequestDto;
 import com.ledger.geektrust.handlers.TransactionHandler;
 import com.ledger.geektrust.util.FileUtil;
+import lombok.experimental.UtilityClass;
 
 import java.io.IOException;
 import java.util.List;
 
-
+@UtilityClass
 public class GeekTrustApplication {
 
 

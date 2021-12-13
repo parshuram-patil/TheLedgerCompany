@@ -5,6 +5,7 @@ import com.ledger.geektrust.dto.BalanceRequestDto;
 import com.ledger.geektrust.dto.IRequestDto;
 import com.ledger.geektrust.dto.LoanRequestDto;
 import com.ledger.geektrust.dto.PaymentRequestDto;
+import lombok.experimental.UtilityClass;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -13,6 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+@UtilityClass
 public class FileUtil {
     public static List<IRequestDto> readTransactions(String filePath) throws IOException {
         List<IRequestDto> requestDtos = new ArrayList<>();

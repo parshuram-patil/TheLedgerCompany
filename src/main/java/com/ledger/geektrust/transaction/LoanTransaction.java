@@ -7,7 +7,7 @@ import com.ledger.geektrust.service.LoanService;
 
 public class LoanTransaction implements ITransaction{
 
-    LoanService loanService;
+    private final LoanService loanService;
 
     public LoanTransaction() {
         loanService = new LoanService();
@@ -15,6 +15,6 @@ public class LoanTransaction implements ITransaction{
 
     @Override
     public void handleTransaction(IRequestDto request) {
-        loanService.approveLoan((LoanRequestDto) request);
+            loanService.approveLoan((LoanRequestDto) request);
     }
 }

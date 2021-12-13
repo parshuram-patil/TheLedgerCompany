@@ -1,5 +1,8 @@
 package com.ledger.geektrust.constant;
 
+import lombok.experimental.UtilityClass;
+
+@UtilityClass
 public class Constant {
 
     public static String SUCCESS = "Success";
